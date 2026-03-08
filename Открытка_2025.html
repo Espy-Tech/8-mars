@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С 8 Марта</title>
+    <link rel="icon" type="image/x-icon" href="image/8-mars.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        
+        body { background: #020617; color: white; font-family: 'Montserrat', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; overflow: hidden; }
+        .font-cursive { 
+            font-family: 'Marck Script', cursive; }
+        .font-serif { 
+            font-family: 'Playfair Display', serif; }
+        .perspective { 
+            perspective: 2000px,  }
+        #card {
+        transform-style: preserve-3d;
+}
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180-neg { transform: rotateY(-180deg); }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        .snowflake { position: absolute; top: -10px; background: white; border-radius: 50%; pointer-events: none; }
+        @keyframes snowfall { 0% { transform: translateY(0); } 100% { transform: translateY(110vh); } }
+        .medallion-glow { box-shadow: 0 0 30px rgba(245, 158, 11, 0.3); }
+        @keyframes epic-burn { 
+          0% { filter: brightness(1); transform: scale(1); } 
+          100% { filter: brightness(0) blur(40px); opacity: 0; transform: scale(0.1) translateY(-1000px); } 
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-[#022c22] via-[#064e3b] to-[#022c22]" onclick="unlockAudio()">
+    <div id="snow"></div>
+    <div id="burnedScreen" style="display:none; position:fixed; inset:0; background:black; color:white; flex-direction:column; align-items:center; justify-content:center; z-index:1000;">
+      <h1 class="font-cursive text-5xl">Желание отправлено... 🏮</h1>
+      <button onclick="location.reload()" class="mt-8 px-8 py-3 bg-amber-500 rounded-full text-black font-bold">НАЧАТЬ ЗАНОВО</button>
+    </div>
+
+    <div class="perspective w-full max-w-[450px] aspect-[2/3]">
+        <div id="card" class="relative w-full h-full preserve-3d transition-transform duration-1000">
+            <!-- FRONT FOLD -->
+            <div id="fold" class="absolute inset-0 w-full h-full preserve-3d z-20 origin-left transition-transform duration-1000">
+                <div class="absolute inset-0 w-full h-full backface-hidden rounded-[2.5rem] bg-[#064e3b] border-[6px] border-amber-500/20 shadow-2xl p-8 flex flex-col items-center text-center overflow-hidden">
+                    
+                    <!-- MARCO BONITO -->
+                    <div class="absolute top-6 left-6 w-16 h-16 text-amber-500/40"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L100 0 L100 5 L5 5 L5 100 L0 100 Z" /><circle cx="15" cy="15" r="4" /></svg></div>
+                    <div class="absolute top-6 right-6 w-16 h-16 text-amber-500/40 rotate-90"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L100 0 L100 5 L5 5 L5 100 L0 100 Z" /><circle cx="15" cy="15" r="4" /></svg></div>
+                    <div class="absolute bottom-6 left-6 w-16 h-16 text-amber-500/40 -rotate-90"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L100 0 L100 5 L5 5 L5 100 L0 100 Z" /><circle cx="15" cy="15" r="4" /></svg></div>
+                    <div class="absolute bottom-6 right-6 w-16 h-16 text-amber-500/40 rotate-180"><svg viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L100 0 L100 5 L5 5 L5 100 L0 100 Z" /><circle cx="15" cy="15" r="4" /></svg></div>
+
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-[#fef3c7] z-10">С 8 Марта!</h2>
+                    <p class="text-xl md:text-2xl font-cursive text-amber-400 mt-2 z-10">Дорогие Девушек</p>
+                    
+                    <div class="flex-1 flex items-center justify-center my-4 z-10">
+                        <div class="relative w-40 h-40 md:w-56 md:h-56 rounded-full border-4 border-amber-500/60 overflow-hidden bg-black/20 medallion-glow">
+                             <div class="absolute inset-1 border border-amber-500/30 rounded-full"></div>
+                             <img src="image/couverture.jpg" class="w-full h-full object-cover rounded-[2.5rem]">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center font-cursive text-amber-400 opacity-80 select-none scale-90 mt-auto pb-4 z-10">
+                        <div class="text-xl">⭐</div>
+                        <div class="text-[10px] tracking-[0.2em]">МИР</div>
+                        <div class="text-[12px] tracking-[0.2em]">УДАЧА</div>
+                        <div class="text-[14px] tracking-[0.2em]">ЛЮБОВЬ</div>
+                        <div class="text-[16px] tracking-[0.2em]">ЗДОРОВЬЕ</div>
+                        <div class="text-[18px] tracking-[0.2em]">СЧАСТЬЕ</div>
+                        <div class="text-2xl font-serif font-bold">2026</div>
+                        <div class="w-1 h-4 bg-current opacity-40 rounded-full"></div>
+                    </div>
+                </div>
+                <!-- Image de couverture -->
+                <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-[#fdfdf7] rounded-[2.5rem] flex items-center justify-center border border-stone-200 overflow-hidden">
+                    <img src="image/couverture.jpg" class="w-full h-full object-cover rounded-[2.5rem]">
+                    
+                </div>
+            </div>
+
+            <!-- image du voeux -->
+            <div class="absolute inset-0 w-full h-full z-10 bg-[#fdfdfc] rounded-[2.5rem] shadow-inner p-10 flex flex-col items-center justify-center border-2 border-stone-100">
+                <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[length:100%_32px] mt-24 opacity-30"></div>
+                <img src="image/voeux.jpg"class = "w-full h-full object-cover rounded-[2.5rem]" >
+                
+            </div>
+
+            <!-- BACK -->
+            <div class="absolute inset-0 w-full h-full rotate-y-180 backface-hidden bg-[#064e3b] rounded-[2.5rem] flex items-center justify-center border-[6px] border-amber-500/20">
+                <span class="text-6xl opacity-20">❤️</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-10 flex gap-4 bg-black/50 p-6 rounded-3xl backdrop-blur-xl">
+        <button onclick="toggleOpen()" class="px-6 py-3 bg-amber-500 text-black font-bold rounded-xl text-xs">ОТКРЫТЬ</button>
+        <button onclick="burn()" class="px-6 py-3 bg-red-600 text-white font-bold rounded-xl text-xs">СЖЕЧЬ 🔥</button>
+    </div>
+
+    <script>
+        const SFX = { OPEN: new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'), FLIP: new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3'), BURN: new Audio('https://assets.mixkit.co/active_storage/sfx/134/134-preview.mp3') };
+        let isOpen = false, isFlipped = false, audioUnlocked = false;
+
+        function unlockAudio() { if(!audioUnlocked) { Object.values(SFX).forEach(s => { s.play().then(() => { s.pause(); s.currentTime=0; }).catch(() => {}); }); audioUnlocked = true; } }
+        function toggleOpen() { 
+            unlockAudio(); 
+            isOpen = !isOpen; 
+            SFX.OPEN.play(); 
+            document.getElementById('fold').classList.toggle('rotate-y-155-neg', isOpen);
+             
+            // Changer le texte du bouton
+            const btn = document.querySelector('button[onclick="toggleOpen()"]');
+            btn.textContent = isOpen ? 'ЗАКРЫТЬ' : 'ОТКРЫТЬ';
+        }
+        function burn() { unlockAudio(); SFX.BURN.play(); document.getElementById('card').style.animation = 'epic-burn 4.5s forwards'; setTimeout(() => { document.getElementById('burnedScreen').style.display='flex'; }, 4000); }
+
+        function createSnow() {
+            const flake = document.createElement('div');
+            flake.className = 'snowflake';
+            flake.style.left = Math.random() * 100 + '%';
+            flake.style.width = flake.style.height = (Math.random() * 4 + 2) + 'px';
+            flake.style.animation = 'snowfall ' + (Math.random() * 5 + 5) + 's linear infinite';
+            document.getElementById('fold').classList.toggle('rotate-y-180-neg', isOpen);
+            setTimeout(() => flake.remove(), 10000);
+        }
+        setInterval(createSnow, 200);
+    </script>
+</body>
+</html>
